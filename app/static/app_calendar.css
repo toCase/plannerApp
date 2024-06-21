@@ -1,0 +1,168 @@
+
+.content{
+    position: inherit;
+
+    display: grid;
+    grid-template-columns: 1fr auto 3fr;
+    gap: 1rem;
+}
+
+.columnA {
+    grid-column: 1;
+    width: 40vw;
+
+    display: flex;
+    flex-direction: column;
+}
+.columnB {
+    grid-column: 3;
+    position: inherit;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.columnA .selector_month{
+    height: 50px;
+
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2rem;
+
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 1.3rem;
+}
+
+.columnA .selector_month .monthNum{
+    display: none;
+}
+
+.columnA .selector_month .btn-sm{
+    text-align: center;
+    width:50px;
+}
+.columnA .selector_month .btn-sm:hover{
+    color: var(--clr-txt-dark);
+    font-weight: bold;
+}
+
+.calendar{
+    display: flex;
+}
+
+.calendar table.month{
+    width: 100%;
+    height: 400px;
+}
+
+.calendar th.month{
+    display: none;
+}
+
+
+.calendar tr{
+    height: 50px;
+}
+.calendar a{
+    text-decoration: none;
+    color: var(--clr-txt-dark);
+}
+
+.calendar td:hover{
+    background-color: var(--clr-cal-hover);
+    /* border-radius: 7px; */
+
+    font-size: 2rem;
+    font-weight: 500;
+    z-index: 100;
+
+
+        color: var(--clr-txt-light);
+
+}
+
+
+.calendar  tr td.event{
+    background-color: var(--clr-menu-sec);
+}
+
+.calendar  tr td.event a{
+    font-size: 1.5rem;
+    color: var(--clr-txt-light);
+}
+
+.calendar tr td.today{
+    font-size: 1.8rem;
+    color: var(--clr-cal-today);
+    border: 3px solid  var(--clr-cal-today);
+}
+
+.calendar tr td.selected{
+    background-color: var(--clr-cal-select);
+}
+
+.calendar td{
+    text-align: center;
+    width: 14.285%;
+}
+
+.columnB h3{
+    text-align: center;
+}
+
+.columnB .btn-new{
+    width: 60px;
+    height: 40px;
+    margin-right: auto;
+    background-color: var(--clr-menu-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.5rem;
+    color: var(--clr-txt-light);
+    text-decoration: none;
+}
+
+
+.columnB .spec-table {
+    display: relative;
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-collapse: collapse;
+}
+
+.columnB .spec-table tr{
+    height: 50px;
+    cursor: pointer;
+}
+
+.columnB .spec-table td{
+    padding-left: 2rem;
+}
+
+.columnB .spec-table tr:nth-of-type(even){
+    background-color: #F3F3F3;
+}
+.columnB .spec-table tr.active{
+    background-color: #fbbd94;
+}
+.columnB .spec-table tr:hover{
+    background-color: #d0d0d0;
+}
+
+
+
+.window .form-content{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.2rem;
+    color: var(--clr-txt-dark);
+}

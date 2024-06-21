@@ -1,0 +1,47 @@
+<div class=" mt-3 mb-3 {% if not form %} visually-hidden {% endif %}" id="form-widget">
+    <div class="card p-3  text-primary-emphasis bg-primary-subtle border border-primary rounded-3">
+        {% if form %}
+        <form action="" class="form-client" method="POST">
+            {% csrf_token %}
+            <div class="form-content container">
+                <div class="row">
+                    <div class="col-4">
+                        <label class="form-label-sm" for="sln-name">Назва:</label>
+                        {{form.sln_name}}
+                    </div>                    
+                    <div class="col-6">
+                        <label class="form-label-sm" for="sln-address">Адреса:</label>
+                        {{form.sln_address}}
+                    </div>
+                    <div class="col-2">
+                        <label class="form-label-sm" for="sln-phone">Телефон:</label>
+                        {{form.sln_phone}}
+                    </div>  
+                </div>
+
+                <div class="hstack gap-3 align-items-end">
+                    <div class="col-7">
+                        <label class="form-label-sm" for="sln-note">Нотатки:</label>
+                        {{form.sln_note}}
+                    </div>                    
+                    <div class="col-1">
+                        <label class="form-label-sm" for="sln-color">Колір:</label>
+                        {{form.sln_color}}
+                    </div>
+                    <div class="btn-group ms-auto" role="group">
+                        <button type="button" class="btn btn-success btn-save float" id="fw-but-save"
+                            hx-post="{% url 'app_saloon_save' id %}" hx-trigger="click" hx-target=".page-container"
+                            hx-swap="outerHTML">Зберегти</button>
+
+                        <button type="button" class="btn btn-warning btn-sm btn-cls" id="fw-but-close"
+                            hx-post="{% url 'app_saloon_close' %}" hx-trigger="click" hx-target="#form-widget"
+                            hx-swap="outerHTML">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>                   
+                </div>                
+            </div>
+        </form>
+        {% endif %}
+    </div>
+</div>

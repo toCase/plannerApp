@@ -1,0 +1,36 @@
+{% for data in product_data %}
+
+    {% comment %} <th class="num" scope="row"></th> {% endcomment %}
+    <td class="col-2">{{data.p_code|default_if_none:""}}</td>
+    <td class="col-7">{{data.p_name}}</td>
+    {% comment %} <td class="col-3">{{data._units}}</td> {% endcomment %}
+    <td class="col-3">{{data.get_p_unit_display}}</td>
+    
+    <td class="col p-0">            
+        <div 
+            class="btn btn-sm"             
+            type="button" 
+            id="tb-but-edit" 
+            hx-post="{% url 'app_product_edit' data.id category %}"
+            hx-trigger="click"
+            hx-target=".page-container"
+            hx-swap="outerHTML">
+            <i class="bi bi-pencil"></i>
+        </div>
+    </td>
+    <td class="col p-0">
+        <button 
+            class="btn btn-sm btn-outline-light text-danger"             
+            type="button" 
+            id="tb-but-del" 
+            hx-post="{% url 'app_product_delete' data.id category %}"
+            hx-trigger="click"
+            hx-target=".page-container"
+            hx-swap="outerHTML"
+            {% if data.docs %} disabled {% endif %}>
+            <i class="bi bi-trash3"></i>
+        </button>
+        
+    </td>
+</tr>
+{% endfor %}

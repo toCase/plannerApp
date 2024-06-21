@@ -1,0 +1,67 @@
+<div class=" mt-3 mb-3 {% if not form %} visually-hidden {% endif %}"  id="form-widget">
+    <div class="shadow p-3 mb-5 bg-body-tertiary col-xl-8 m-auto">
+        <form action="" class="form-client" method="POST">
+            {% csrf_token %}
+            <div class="form-content container">
+                <div class="row mb-3">
+                    <div class="col-4">
+                        <label class="form-label-sm" for="a-code">ЄДРПОУ</label>
+                        {{form.a_code}}
+                    </div>
+                    <div class="col-8">
+                        <label class="form-label-sm" for="a-name">Назва</label>
+                        {{form.a_name}}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-4">
+                        <label class="form-label-sm" for="a-person">Представник</label>
+                        {{form.a_person}}
+                    </div>
+                    <div class="col-3">
+                        <label class="form-label-sm" for="a-phone">Телефон</label>
+                        {{form.a_phone}}
+                    </div>
+                    <div class="col-5">
+                        <label class="form-label-sm" for="a-mail">E-mail</label>
+                        {{form.a_mail}}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <label class="form-label-sm" for="a-bank">Інформація про банк</label>
+                        {{form.a_bank}}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <label class="form-label-sm" for="a-note">Примітка</label>
+                        {{form.a_note}}
+                    </div>
+                </div>
+                <div class="row justify-content-end">
+                    <div class="btn-group col-2" role="group" aria-label="Basic mixed styles example">
+
+                        <button type="button" class="btn btn-success" id="fw-but-save"
+                            hx-post="{% url 'app_agent_save' id %}" hx-trigger="click" hx-target=".page-container"
+                            hx-swap="outerHTML">Зберегти</button>
+
+                        <button type="button" class="btn btn-warning btn-sm" id="fw-but-close"
+                            hx-post="{% url 'app_agent_close' %}" hx-trigger="click" hx-target="#form-widget"
+                            hx-swap="outerHTML">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    {% if errors %}
+    <div class="shadow p-3 mb-5 bg-body-tertiary col-xl-8 m-auto">        
+        {% for message in errors %}
+        <li>
+        <span style="color:#dc3545;" class="mx-3"><i class="bi bi-exclamation-triangle-fill"></i></span><span>{{ message }}</span></li>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>

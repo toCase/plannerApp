@@ -1,0 +1,39 @@
+
+    {% for data in sln_data %}    
+    <tr style="background-color={{data.sln_color}}">
+        <td class="col-4">{{data.sln_name}}</td>
+        <td class="col-6">{{data.sln_phone}} / {{data.sln_address}}</td>
+        {% if data.sln_main %}
+            <td class="col-1" style="color: {{data.sln_color}};"><i class="bi bi-circle-fill"></i></td>
+        {% else %}
+            <td clall="col-1"></td>
+        {% endif %}
+        
+        
+        <td class="col p-0">            
+            <div 
+                class="btn btn-sm"             
+                type="button" 
+                id="tb-but-edit" 
+                hx-post="{% url 'app_saloon_edit' data.id %}"
+                hx-trigger="click"
+                hx-target="#form-widget"
+                hx-swap="outerHTML">
+                <i class="bi bi-pencil"></i>
+            </div>
+        </td>
+        <td class="col p-0">
+            <button 
+                class="btn btn-sm btn-outline-light text-danger"             
+                type="button" 
+                id="tb-but-del" 
+                hx-post="{% url 'app_saloon_delete' data.id %}"
+                hx-trigger="click"
+                hx-target=".page-container"
+                hx-swap="outerHTML">
+                <i class="bi bi-trash3"></i>
+            </button>
+            
+        </td>
+    </tr>
+    {% endfor %}

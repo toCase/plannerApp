@@ -1,0 +1,43 @@
+{% for data in sln_data %}
+    <div class="col">
+        <div class="card" style="min-height:140px; max-height: 140px;">
+        {% if data.sln_main %}
+            <div class="card-title text-center fw-semibold" 
+                    style="background-color: {{data.sln_color}}; min-height:30px; max-height: 30px;">
+        {% else %}
+            <div class="card-title text-center fw-semibold" style="min-height:30px; max-height: 30px;">
+        {% endif %}
+            
+                {{data.sln_name}}
+            </div>
+
+            <div class="card-body text-left overflow-hidden" style="font-size: .8rem;">
+                <i class="bi bi-house"></i> {{data.sln_address}}<br>
+                <i class="bi bi-telephone"></i> {{data.sln_phone}} 
+            </div>
+            
+
+            <div class="btn-group d-flex" role="group">
+                <button type="button" class="btn btn-sm btn-primary w-100"
+                        id="tb-but-act" 
+                        hx-post="{% url 'app_saloon_active' data.id %}"
+                        hx-trigger="click"
+                        hx-target=".page-container"
+                        hx-swap="outerHTML"><i class="bi bi-check-lg"></i></i></button>
+                <button type="button" class="btn btn-sm btn-primary w-100"
+                        id="tb-but-edit" 
+                        hx-post="{% url 'app_saloon_edit' data.id %}"
+                        hx-trigger="click"
+                        hx-target="#form-widget"
+                        hx-swap="outerHTML"><i class="bi bi-pencil"></i></i></button>
+                <button type="button" class="btn btn-sm btn-danger w-100"
+                        id="tb-but-del" 
+                        hx-post="{% url 'app_saloon_delete' data.id %}"
+                        hx-trigger="click"
+                        hx-target=".page-container"
+                        hx-swap="outerHTML"><i class="bi bi-trash3"></i></button>
+            </div>
+        </div>
+    </div>
+
+{% endfor %}

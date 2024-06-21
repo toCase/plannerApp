@@ -1,0 +1,18 @@
+<div id="postpone-spec" class="row mt-4">
+    <h5 class="text-center  mt-4">Виберіть майстра</h5>
+    
+    <div class="row row-cols-3 justify-content-center">
+    {% for data in spec %}
+    
+        <div class="col-4 form-check">
+            <input type="radio" class="form-check-input" id="spec{{data.cl_spec_id}}" name="pp-spec" value="{{data.cl_spec_id}}" hx-post="{% url 'app_postpone_time' %}" hx-trigger="click, pp-spec" hx-target="#postpone-time" hx-swap="outerHTML"/>
+            <label for="spec{{data.cl_spec_id}}">{{data.spec_fname}} {{data.spec_lname}}</label>
+        </div>
+    
+    {% endfor %}
+    </div>
+
+    {% include 'app_shed/app_postpone_time.html' %}
+
+</div>
+

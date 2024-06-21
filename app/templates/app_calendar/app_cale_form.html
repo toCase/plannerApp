@@ -1,0 +1,48 @@
+<div class="mb-3 {% if not form %} visually-hidden {% endif %}" id="form-widget">
+    <div class="card p-3 bg-primary-subtle border border-primary rounded-3">
+        {% if form %}
+        <form class="form-cale" method="POST">
+            {% csrf_token %}
+            <div class="container">
+                <div class="hstack gap-3 align-items-end">
+                    
+                    <div class="col-4">
+                        <label for='cl-spec'>Оберіть спеціаліста</label>
+                        {{form.cl_spec}}
+                    </div>
+                    <div class="col-4">
+                        <label for='cl-shed'>Оберіть шаблон:</label>
+                        {{form.cl_shed}}
+                    </div>
+
+                    <div class="btn-group ms-auto" role="group" aria-label="">
+                        
+                        <button type="button" 
+                                class="btn btn-success btn-save float" 
+                                id="fw-but-save"
+                                hx-post="{% url 'app_cale_save' id day month year %}" 
+                                hx-trigger="click" 
+                                hx-target="#cale-container"
+                                hx-swap="outerHTML">
+                                
+                                Зберегти</button>
+
+                        <button type="button" 
+                                class="btn btn-warning btn-sm btn-cls" 
+                                id="fw-but-close"
+                                hx-post="{% url 'app_cale_close' %}" 
+                                hx-trigger="click" 
+                                hx-target="#form-widget"
+                                hx-swap="outerHTML">
+                                
+                                <i class="bi bi-x-lg"></i>
+                        </button>
+                    
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        {% endif  %}
+    </div>
+</div>

@@ -1,0 +1,68 @@
+<div class="container" id="shed-container">
+
+    <div class="row gx-5 mt-3">        
+
+        {% comment %} Left side {% endcomment %}
+        <div class="col-6">
+
+            <div class="row">
+                <div class="col-1">
+                    <button class="btn btn-primary btn-sm" hx-post="{% url 'app_shed_prev_month' month year %}"
+                        hx-trigger="click" hx-target="#shed-container" hx-swap="outerHTML"><i
+                            class="bi bi-chevron-left"></i></button>
+                </div>
+                <div class="col-10 text-center">
+                    <h4>{{cmonth}}</h4>
+                </div>
+                <div class="col-1">
+                    <button class="btn btn-primary btn-sm" hx-post="{% url 'app_shed_next_month' month year %}"
+                        hx-trigger="click" hx-target="#shed-container" hx-swap="outerHTML"><i
+                            class="bi bi-chevron-right"></i></button>
+                </div>
+            </div>
+
+            <div class="row calendar">
+                {{ calendar|safe }}
+            </div>
+
+            <hr>
+            <h5 class="mt-2">Працюють {{cdate}}:</h5>
+
+            <div class="overflow-auto" id="cale-spec">    
+                <div class="row row-cols-4 mt-3">
+                    
+                    {% if spec_data %}
+                    {% for data in spec_data %}
+                    <div class="col text-center p-2" style="cursor: pointer; 
+                    {% if selected_spec == data.cl_spec_id %}
+                        background-color: {{data.spec_color}};
+                    {% endif %} 
+                    "
+                        hx-post="{% url 'app_shed_spec' day month year data.cl_spec_id %}" 
+                        hx-trigger="click"
+                        hx-target="#shed-container" 
+                        hx-swap="outerHTML">
+                        {{data.spec_fname}} {{data.spec_lname}}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+            
+                    <div class="col text-center p-2" style="background-color: #3B7DDD; cursor: pointer;"
+                        hx-post="{% url 'app_shed_spec' day month year '0' %}" hx-trigger="click" hx-target="#shed-container"
+                        hx-swap="outerHTML">
+                        ***
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+
+
+
+        {% comment %} Right side {% endcomment %}
+        <div class="col-6">
+
+            {% include 'app_shed/app_shed_tab.html' %}
+        </div>
+    </div>

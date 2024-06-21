@@ -1,0 +1,57 @@
+{% extends "app_template.html" %}
+
+{% block body %}
+
+<div class="page-menu">
+    <div class="menu-search">
+        <form method="GET" action="{% url 'app_sh_template' %}">
+            {% if query %}
+            <input type="text" name="q" placeholder="Введіть Назву або Примітку -> Enter" value="{{query}}" />
+            {% else %}
+            <input type="text" name="q" placeholder="Введіть Назву або Примітку -> Enter" />
+            {% endif %}
+        </form>        
+    </div>
+    <div class="menu-buttons">
+        <a class="top-button" role="button" id="button-add" href="{% url 'app_sh_template_add' %}"><i class="bi bi-plus"></i></a>
+    </div>
+</div>
+
+<div class="page-container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Назва</th>
+            <th scope="col">Шаблон</th>
+            <th scope="col">Примітка</th>
+            <th scope="col">Застосування</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in data %}
+        <tr>
+            <th class="num" scope="row"></th>
+            <td>{{item.st_name}}</td>
+            <td>{{item.st_template}}</td>
+            <td>{{item.st_note}}</td>
+            <td>{{item.call}}</td>
+            <td>
+                <a class="btn btn-sm" href="{% url 'app_sh_template_upd' item.id %}" role="button">
+                    <i class="bi bi-pencil"></i>
+                </a>
+            </td>
+            <td> {% csrf_token %}
+                <form class="col-md-6 offset-md-4" method="GET" action="{% url 'app_sh_template' %}" id="del_form">
+                    <button class="btn btn-sm" type="submit" form="del_form" name="D" value="{{item.id}}"  {% if item.call > 0 %} disabled {% endif %}><i class="bi bi-trash-fill"></i></button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+{% endblock body %}

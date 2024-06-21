@@ -1,0 +1,30 @@
+<div class="container  mt-3" id="shedule-container">
+    <form>
+    <div class="row justify-content-center">
+        <h5 class="text-center">Виберіть дату</h5>
+        <div class="col-4 align-self-center">
+            <input class="form-control" type="date" name="pp-date" id="pp-date" value="{{form_date}}" 
+            hx-get="{% url 'app_postpone_spec' %}"}
+            hx-trigger="input changed, pp-date" hx-target="#postpone-spec" hx-swap="outerHTML"/>
+        </div>
+    </div>
+
+    {% include 'app_shed/app_postpone_spec.html' %}    
+
+    <div class="row">
+        <div class="col-2">
+            <button class="btn btn-warning" id="pp-close" hx-post="{% url 'app_postpone_close' day month year %}"
+            hx-trigger="click" hx-target="#shed-container" hx-swap="outerHTML">
+            Відмінити
+            </button>
+        </div>
+        <div class="col-2 ms-auto">
+            <button class="btn btn-success" id="pp-save" hx-post="{% url 'app_postpone_save' day month year meet %}"
+            hx-trigger="click" hx-target="#shedule-container" hx-swap="outerHTML">
+            Зберегти
+            </button>
+        </div>
+    </div>
+    </form>
+
+</div>

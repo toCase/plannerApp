@@ -1,0 +1,132 @@
+<div id="shedule-container">
+<div class="{% if shedule_tab == 0 %} visually-hidden {% endif %}" >
+
+    <div class="col-12 text-center">
+        <h4>{{cdate}}</h4>
+    </div>
+
+    {% include 'app_shed/app_shedule.html' %}
+</div>
+<div class="{% if meet_form == 0 %} visually-hidden {% endif %}">
+    <div class="card p-3 bg-primary-subtle border border-primary rounded-3">
+        <form class="form-meet" method="POST">
+            {% csrf_token %}
+            <div class="container">
+
+                <div class="row">
+                    {% if meet != "0" %}
+                    <div class="col-xl-1">
+                        <button type="button" class="btn btn-warning btn-sm" id="fw-but-postpone"
+                                hx-post="{% url 'app_meet_postpone' day month year meet %}" hx-trigger="click"
+                                hx-target="#shedule-container" hx-swap="outerHTML" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Tool Tip">
+                                <i class="bi bi-calendar4-range"></i>
+                        </button>       
+                    </div>             
+                    {% endif %}
+
+                    <div class="col-xl-7">
+                        <label for="dt_date">Дата:</label>
+                        <h5>{{form_date}}</h5>
+                    </div>
+                    <div class="col-xl-4">
+                        <label for="dt_time"> Час: </label>
+                        <input class="form-control form-control-sm" type="time" name="dt_time" id="dt_time"
+                            value="{{form_time}}" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label for='m-client'>Клієнт:</label>
+                    <div class="col-xl-6">
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-text "><i class="bi bi-telephone"></i></span>
+                            <input type="search" class="form-control form-control-sm" placeholder="Номер телефону"
+                                name="m-phone" id="m-phone"
+                                value="{{card.m_client.phone}}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-9">
+                        <div class="input-group input-group-sm" id="meet-client">
+                            <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                            <input type="search" class="form-control form-control-sm" placeholder="Ім'я "
+                                name="m-client" id="m-client"
+                                value="{{card.m_client}}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label for='m-service'>Послуги:</label>
+                    <div class="col-xl-8">
+                        <input type="text
+                            87
+                            " class="form-control form-control-sm" placeholder="Послуги:"
+                            name="m-service" id="m-service"
+                            value="{{card.m_service}}">
+                    </div>
+                    <div class="col-xl-4">
+                        <select class="form-control form-control-sm" id="service-select">
+                            {% for service in services %}
+                            <option value="{{service.id}}">{{ service.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+
+                    <script>
+                        service = document.getElementById("service-select");
+                        service_line = document.getElementById("m-service");
+                        function changeService() {
+                            service_line.value = service_line.value + " " + service.options[service.selectedIndex].text;
+                        }
+                        service.addEventListener('change', changeService);
+                    </script>
+
+                </div>
+
+                <div class="hstack gap-3 align-items-end mt-3">
+
+                    {% if meet != "0" %}
+
+                    <div class="btn-group" role="group" aria-label="">
+                        <button type="button" class="btn btn-danger btn-del float" id="fw-but-del" 
+                        hx-post="{% url 'app_meet_del' day month year meet %}" 
+                        hx-trigger="click" 
+                        hx-target="#shedule-container" 
+                        hx-swap="outerHTML">
+                        Відмінити</button>
+
+                        <button type="button" class="btn btn-success btn-del float" id="fw-but-" 
+                                hx-post="{% url 'app_meet_save' day month year meet %}" 
+                                hx-trigger="click" 
+                                hx-target="#shedule-container" 
+                                hx-swap="outerHTML">
+                                Додати рахунок</button>
+                    </div>
+
+                    {% endif %}
+
+                    <div class="btn-group ms-auto" role="group" aria-label="">
+                        <button type="button" class="btn btn-success btn-save float" id="fw-but-save" 
+                            hx-post="{% url 'app_meet_save' day month year meet %}" 
+                            hx-trigger="click" 
+                            hx-target="#shedule-container" 
+                            hx-swap="outerHTML">
+                            Зберегти</button>
+
+                        <button type="button" class="btn btn-warning btn-sm btn-cls" id="fw-but-close"
+                            hx-post="{% url 'app_shed_close' day month year %}" hx-trigger="click"
+                            hx-target="#shedule-container" hx-swap="outerHTML">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+
+                    </div>
+                </div>
+                </select>
+        </form>
+    </div>
+</div>
+</div>

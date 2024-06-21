@@ -1,0 +1,98 @@
+<div class="container" id="cale-container">
+
+    <div class="row">
+        <div class="col-6 ms-auto">
+            <div class="menu-buttons mt-1 float-end">
+                <button class="top-button btn btn-sm btn-primary " type="button"
+                    hx-post="{% url 'app_cale_add' day month year %}" hx-trigger="click" hx-target="#form-widget"
+                    hx-swap="outerHTML">
+
+                    <i class="bi bi-plus"></i>
+                </button>
+                <div class="vr"></div>
+                <button class="top-button btn btn-sm btn-primary" type="button"
+                    hx-post="{% url 'app_cale_add' day month year %}" hx-trigger="click" hx-target="#form-widget"
+                    hx-swap="outerHTML">
+
+                    <i class="bi bi-filter-left"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+
+        {% include 'app_calendar/app_cale_form.html' %}
+
+        {% comment %} Left side {% endcomment %}
+        <div class="col-6">
+            <div class="row">
+                <div class="col-1">
+                    <button class="btn btn-primary btn-sm" hx-post="{% url 'app_cale_prev_month' month year %}"
+                        hx-trigger="click" hx-target="#cale-container" hx-swap="outerHTML"><i
+                            class="bi bi-chevron-left"></i></button>
+                </div>
+                <div class="col-10 text-center">
+                    <h4>{{cmonth}}</h4>
+                </div>
+                <div class="col-1">
+                    <button class="btn btn-primary btn-sm" hx-post="{% url 'app_cale_next_month' month year %}"
+                        hx-trigger="click" hx-target="#cale-container" hx-swap="outerHTML"><i
+                            class="bi bi-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="row calendar">
+                {{ calendar|safe }}
+            </div>
+
+            <hr>
+            <h5 class="mt-2">В цьому місяці працюють:</h5>
+
+            <div class="row row-cols-4 mt-3">
+                {% if spec_data %}
+                {% for data in spec_data %}
+                <div class="col text-center p-2" style="background-color: {{data.spec_color}}; cursor: pointer; "  
+                    hx-post="{% url 'app_cale_spec' day month year data.id %}"
+                    hx-trigger="click" 
+                    hx-target="#cale-container" 
+                    hx-swap="outerHTML">
+                    {{data.spec_fname}} {{data.spec_lname}} <span class="badge text-bg-warning">{{data.cale}}</span>
+                </div>
+                {% endfor %}
+                <div class="col text-center p-2" style="background-color: #3B7DDD; cursor: pointer;" 
+                    hx-post="{% url 'app_cale_spec' day month year '0' %}"
+                    hx-trigger="click" 
+                    hx-target="#cale-container" 
+                    hx-swap="outerHTML">
+                    ***
+                </div>
+                
+                {% else %}
+                <tr>
+                    <td> ...ніхто, поки що ... </td>
+                </tr>
+                {% endif %}
+            </div>
+        </div>
+
+
+
+        {% comment %} Left side {% endcomment %}
+        <div class="col-6">
+
+            <div class="container">
+
+                <div class="col-12 text-center">
+                    <h4>{{cdate}}</h4>
+                </div>
+
+                <div class="overflow-auto" id="cale-table">
+                    <table class="table table-hover table-sm">
+
+                        {% include 'app_calendar/app_cale_row.html' %}
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>

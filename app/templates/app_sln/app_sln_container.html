@@ -1,0 +1,33 @@
+
+<div class="page-container mt-3">
+    {% include 'app_sln/app_sln_form.html' %}
+
+    <div class="overflow-auto" id="sln-table">
+        <div class="row row-cols-5 g-3">
+            {% include 'app_sln/app_sln_item.html' %}
+        </div>
+    </div>
+
+    {% if pag %}
+    <div class="btn-group" role="group" aria-label="pagination">
+        {% for  page in pag %}
+            {% if page == apage %}
+                <button type="button" 
+                            class="btn btn-sm btn-primary"
+                            hx-post="{% url 'app_saloon_page' page %}"
+                            hx-trigger="click"
+                            hx-target=".page-container"
+                            hx-swap="outerHTML">{{page}}</button>
+            {% else %}
+                <button type="button" 
+                class="btn btn-sm"
+                hx-post="{% url 'app_saloon_page' page %}"
+                hx-trigger="click"
+                hx-target=".page-container"
+                hx-swap="outerHTML">{{page}}</button>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+</div>

@@ -1,0 +1,140 @@
+
+/* .calendar th {
+
+} */
+
+.calendar tr{
+    height: 50px;
+    color: var(--clr-txt-dark);
+}
+
+.calendar td:hover{
+    background-color: var(--clr-cal-hover);
+    /* border-radius: 7px; */
+
+    font-size: 2rem;
+    font-weight: 500;
+    z-index: 100;
+
+    color: var(--clr-txt-light);
+    cursor: pointer;
+}
+
+
+.calendar  tr td.event{
+    /* background-color: var(--clr-menu-sec); */
+    background-color: var(--event-color);
+}
+
+.calendar  tr td.event{
+    font-size: 1.5rem;
+    color: var(--clr-txt-light);
+}
+
+.calendar tr td.today{
+    font-size: 1.8rem;
+    color: var(--clr-cal-today);
+    border: 3px solid  var(--clr-cal-today);
+}
+
+.calendar tr td.selected{
+    /* background-color: var(--clr-cal-select); */
+    font-size: 1.5rem;
+    border: 3px solid  var(--clr-cal-select);
+}
+
+.calendar td, .calendar th {
+    text-align: center;
+    width: 14.285%;
+}
+
+
+.metting{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: .5rem;
+
+}
+
+.metting .meet{
+    width: 100%;
+    height: 100px;
+    background-color: var(--clr-bg);
+
+    text-decoration: none;
+    color: var(--clr-txt-dark);
+}
+.metting .meet:hover{
+    background-color: var(--clr-meet);
+}
+.meet .meet-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 .5rem;
+
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+.meet-header .m-status{
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;        
+}
+
+.meet .meet-service{
+    padding: 0 1.5rem;
+    font-size: 1.1rem;
+}
+
+.meet .meet-note{
+    padding: 0 2.5rem;
+    font-size: .9rem;
+    font-style: italic;
+    height: 22px;
+}
+
+.meet .meet-footer{
+    height: 20px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0;
+
+    padding: 0;
+
+    font-size: .8rem;
+    font-weight: 800;
+    text-transform: lowercase;
+}
+
+.meet-footer .m-value, 
+.meet-footer .m-report, 
+.meet-footer .m-review {
+    width: 80px;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.meet-footer .m-value{
+    background-color: var(--clr-m-value);
+    color: var(--clr-txt-light);
+}
+.meet-footer .m-report{
+    background-color:var(--clr-m-report);
+    color: var(--clr-txt-light);
+}
+
+.meet-footer .m-review{
+    background-color: var(--clr-m-review);
+    color: var(--clr-txt-light);
+}
+
+/*----**/
+

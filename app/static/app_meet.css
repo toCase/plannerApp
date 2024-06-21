@@ -1,0 +1,97 @@
+.meet-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.meet-content {
+    width: 600px;
+    
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 1.3rem;
+}
+
+.meet-content label{
+    text-align: right;
+}
+
+.meet-content .form-service, 
+.meet-content .form-note, 
+.meet-content .form-report{
+    width: inherit;
+    margin-left: 5px;
+}
+
+.meet-content .form-report{
+    max-height: 80px;
+}
+
+.meet-content .form-value{
+    width: 110px;
+    text-align: right;
+}
+
+
+.meet-content .rowA-meet{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.meet-content .rowB-meet{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.meet-content .rowC-meet{
+    margin-left: 125px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.meet-content .rowD-meet, 
+.meet-content .rowE-meet{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.meet-content .but{
+    margin-left: 100px;
+}
+
+/* .meet-content select{
+    padding: .1em .3em;
+    font-size: 1.2rem;
+    border: 1px solid orange;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    color: var(--clr-txt-dark);
+    outline: none;
+}
+
+.meet-content select:focus{
+    border: 3px solid orange;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.meet-content option{
+    height: 30px;
+}
+
+.meet-content .my-select{
+    position: relative;
+    height: 2.5rem;
+}
+ */

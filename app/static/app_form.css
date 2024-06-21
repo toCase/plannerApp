@@ -1,0 +1,239 @@
+select.appComboBox, 
+input[type="time"],
+input[type="number"],
+input[type="text"], 
+input[type="search"],
+textarea{
+    padding: .1em .3em;
+    font-size: 1.2rem;
+    border: 1px solid orange;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 5px;
+    color: var(--clr-txt-dark);
+    outline: none;
+
+    background-image: transparent;
+    
+}
+
+select.appComboBox:is(:hover, :focus), 
+input[type="time"]:is(:hover, :focus),
+input[type="number"]:is(:hover, :focus),
+input[type="search"]:is(:hover, :focus),
+input[type="text"]:is(:hover, :focus){
+    border: 3px solid orange;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+select.appComboBox option{
+    height: 30px;
+}
+
+label{
+    min-width: 120px;
+    text-align: left;
+
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+textarea {
+    font-size: .8rem;
+    font-style: italic;
+    background-image: linear-gradient(var(--clr-bg) 0%, var(--clr-meet) 100%);    
+}
+
+/* маленькая пользовательская кнопка */
+
+.btn-worker{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--clr-txt-dark);
+
+    border: none;
+    background-color: var(--clr-bg);
+    color: darkorange;
+
+}
+
+.btn-worker:hover{
+    color: var(--clr-txt-dark);
+}
+
+
+
+/* кнопки форм  */
+
+.but {
+    padding-top: 1rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-content: center;    
+}
+
+.but .btn-del, 
+.but .btn-save, 
+.but .btn-cancel {
+    border: none;
+    height: 40px;
+    width: 120px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+}
+
+.but .but-ok{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    gap: 0;
+}
+
+.but .btn-cls{
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.5rem;
+    color: var(--clr-txt-dark);
+}
+
+.but .btn-del{
+    background-color: darkorange;
+    color: #FFF;
+}
+.but .btn-del:hover{
+    background-color: brown;
+}
+
+.but .btn-cancel {
+    color: var(--clr-txt-dark)
+}
+.but .btn-cancel:hover {
+    background-color: orange;
+}
+
+.but .btn-save {
+    background-color: darkgreen;
+    color: var(--clr-txt-light);
+}
+.but .btn-save:hover {
+    background-color: green;
+}
+
+.but .btn-cls:hover {
+    background-color: orange;
+    color: var(--clr-txt-dark);
+}
+
+/* for dialog modal form */
+dialog{
+    width: 500px;
+    height: max-content;
+    padding: 2rem;
+    margin: auto;
+
+    border: 1px solid orange;
+    border-radius: 5px;
+    outline: none;
+
+    background: var(--clr-bg);
+
+}
+
+dialog::backdrop {
+    background-color: #1b355b93;
+}
+
+/*top menu*/
+
+.page-menu{
+    min-height: 40px;
+    max-height: 40px;
+    width: 100%;
+
+    background-color: var(--clr-menu-bg);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & .menu-search{
+        width: 50%;
+        height: 100%;
+        padding-left: 2rem;
+
+        & input[type="text"],
+        & input[type="search"]{
+            width: 100%;
+            background-color: transparent;
+            color: var(--clr-txt-light);
+        }
+        & input[type="text"]::placeholder, 
+        & input[type="search"]::placeholder{
+            font-size: 1rem;
+            font-style: italic;
+        }
+    }
+
+    & .menu-buttons{
+        width: 50%;
+        height: 100%;
+
+        padding-right: 2rem;
+
+        display: flex;
+        justify-content: right;
+        align-items: center;
+
+        & .top-button{
+            min-width: 40px;
+            max-width: 40px;
+            height: 100%;
+
+            color: var(--clr-txt-light);
+            background-color: var(--clr-menu-bg-act);
+
+            font-size: 1.2rem;
+
+            border: none;
+            outline: none;
+        }
+
+        & .top-button:hover{
+            border-bottom: 3px solid var(--clr-menu-sec);
+            font-size: 1.5rem;
+        }
+
+        & a.top-button{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+/*main container*/
+.page-container{
+    padding: 2rem;
+}
+

@@ -1,0 +1,15 @@
+<div id="postpone-time" class="row mt-4">
+    <h5 class="text-center  mt-4">Виберіть час</h5>
+    
+    <div class="row row-cols-3 justify-content-center">
+    {% for data in spec_time %}
+    
+        <div class="col-3 form-check">
+            <input type="radio" class="form-check-input" id="st{{data}}" name="pp-time" value="{{data}}"/>
+            <label for="st{{data}}">{{data}}</label>
+        </div>
+    
+    {% endfor %}
+    </div>
+
+</div>

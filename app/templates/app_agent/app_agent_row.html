@@ -1,0 +1,36 @@
+
+{% for data in agent_data %}
+
+    {% comment %} <th class="num" scope="row"></th> {% endcomment %}
+    <td class="col-2">{{data.a_code}}</td>
+    <td class="col-7">{{data.a_name}}</td>
+    <td class="col-3">{{data.a_phone|default_if_none:""}}</td>
+    
+    <td class="col p-0">            
+        <div 
+            class="btn btn-sm"             
+            type="button" 
+            id="tb-but-edit" 
+            hx-post="{% url 'app_agent_edit' data.id %}"
+            hx-trigger="click"
+            hx-target=".page-container"
+            hx-swap="outerHTML">
+            <i class="bi bi-pencil"></i>
+        </div>
+    </td>
+    <td class="col p-0">
+        <button 
+            class="btn btn-sm btn-outline-light text-danger"             
+            type="button" 
+            id="tb-but-del" 
+            hx-post="{% url 'app_agent_delete' data.id %}"
+            hx-trigger="click"
+            hx-target=".page-container"
+            hx-swap="outerHTML"
+            {% if data.docs %} disabled {% endif %}>
+            <i class="bi bi-trash3"></i>
+        </button>
+        
+    </td>
+</tr>
+{% endfor %}

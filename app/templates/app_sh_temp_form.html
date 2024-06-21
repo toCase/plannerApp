@@ -1,0 +1,75 @@
+{% extends "app_template.html" %}
+
+{% block body %}
+<div class="page-container">
+    <div class="content">
+        <!-- <div class="constructor"> -->
+        <div class="columnA">
+            <h5>Налаштування шаблону</h5>
+            <div class="control">
+                <div>
+                    <label for="start">Початок зміни в часах (від 0 до 23):</label>
+                    <input type="number" id="start" name="start" min="0" max="23" value="0">
+                </div>
+                <div>
+                    <label for="fin">Кінець зміни в часах (від 1 до 24):</label>
+                    <input type="number" id="fin" name="fin" min="1" max="24" value="1">
+                </div>
+                <div>
+                    <label for="dur">Тривалість 1 сесії в хвилинах:</label>
+                    <input type="number" id="dur" name="dur" min="1" max="1440" value="1">
+                </div>
+                <div class="btn-panel">
+                    <div class="btn-pls"><i class="bi bi-plus"></i></div>
+                    <div class="btn-upd"><i class="bi bi-arrow-clockwise"></i></div>
+                </div>
+            </div>
+            {% if update %}
+                <form class="control-form" method="GET" action="{% url 'app_sh_template_upd' update %}">
+            {% else %}
+                <form class="control-form" method="GET" action="{% url 'app_sh_template_add' %}">
+            {% endif %}
+
+                {% if query %}
+                <input class="form-control" id="st-control" type="text" name="q" readonly value="{{query}}" />
+                {% else %}
+                <input class="form-control" id="st-control" type="text" name="q" readonly />
+                {% endif %}
+
+                <input class="btn-gen" type="submit" value="Generate" />
+                <div class="btn-ok"><i class="bi bi-check"></i></i></div>
+            </form>
+            <hr>
+            <h5>Інформація про шаблон</h5>
+
+            <form action="" class="form_st" method="POST">
+                {% csrf_token %}
+                <!-- <div class="bl_name"> -->
+                <label for="st_name">Найменування:</label>
+                {{form.st_name}}
+                <label for="st_template">Код шаблону:</label>
+                {{form.st_template}}
+                <label for="st_note">Примітка:</label>
+                {{form.st_note}}
+                <input class="btn-save" type="submit" value="Зберегти" />
+                <!-- </div> -->
+            </form>
+        </div>
+
+
+        <div class="columnB">
+            <ul class="st-table">
+                <!-- <tbody> -->
+                    {% for item in sh_temp %}
+                    <!-- <tr>
+                        <th class="num" scope="row"></th> -->
+                        <li>{{item}}</li>
+                    <!-- </tr> -->
+                    {% endfor %}
+                <!-- </tbody> -->
+            </ul>
+        </div>
+    </div>
+
+</div>
+{% endblock body %}

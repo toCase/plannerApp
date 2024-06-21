@@ -1,0 +1,51 @@
+
+<div class="page-container" >
+
+    {% include 'app_client/app_client_form.html' %}
+
+    <div class="{% if form %} visually-hidden {% endif %}">
+    
+        <div class="overflow-auto">
+            <table class="table table-hover table-sm " >
+                <thead>
+                    <tr>
+                        {% comment %} <th scope="col">#</th> {% endcomment %}
+                        <th class="col-3">Ім'я</th>
+                        <th class="col-3">Прізвище</th>
+                        <th class="col-3">Телефон</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>        
+                <tbody id="data_client">
+                    {% include 'app_client/app_client_row.html' %}      
+                </tbody>  
+            </table>
+        </div>
+
+        {% if pag %}
+        <div class="btn-group mt-3 " role="group" aria-label="pagination">
+            {% for  page in pag %}
+                {% if page == apage %}
+                    <button type="button" 
+                                class="btn btn-sm btn-primary"
+                                hx-post="{% url 'app_clients_page' page %}"
+                                hx-trigger="click"
+                                hx-target=".page-container"
+                                hx-swap="outerHTML">{{page}}</button>
+                {% else %}
+                    <button type="button" 
+                    class="btn btn-sm"
+                    hx-post="{% url 'app_clients_page' page %}"
+                    hx-trigger="click"
+                    hx-target=".page-container"
+                    hx-swap="outerHTML">{{page}}</button>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+</div>

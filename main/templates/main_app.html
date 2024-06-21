@@ -1,0 +1,37 @@
+{% extends "main_temp.html" %}
+
+{% block title %} Planner - Company{% endblock title %}
+
+{% block body %}
+
+    <h5> Привет {{user.username}} </h5>
+{% if has_firms == 0 %}
+    <h4> у вас нет зарегестрированной компаний !!!</h4>
+{% endif %}
+<hr>
+
+<div>
+    <h5>Тестирование</h5>
+    {{firm_test.id}} -- <a href="{% url 'app_welcome' firm_test.id %}">{{firm_test.name}}</a> -- {{firm_test.mail}}
+</div>
+<hr>
+
+<div>
+    <h5>Регистрация </h5>
+    <p> Для регистрации компании вам потребуются определенные документы: </p>
+</div>
+<hr>
+
+{% if has_firms > 0 %}
+
+
+{% for firm in firms %}
+<div>
+    <h5>Ваши организации</h5>
+    {{firm.id}} -- <a href="{% url 'app_welcome' firm.id %}">{{firm.name}}</a> -- {{firm.mail}}
+</div>
+{% endfor %}
+
+{% endif %}
+
+{% endblock body %}

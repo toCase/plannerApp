@@ -1,0 +1,46 @@
+
+    {% for data in client_data %}
+    <tr>
+
+        {% comment %} <th class="num" scope="row"></th> {% endcomment %}
+        <td class="col-3">{{data.f_name|default_if_none:""}}</td>
+        <td class="col-3">{{data.l_name|default_if_none:""}}</td>
+        <td class="col-3">{{data.phone|default_if_none:""}}</td>
+        {% if data.email %}
+            <td class="col"><i class="bi bi-envelope"></i></td>
+        {% else %}
+            <td class="col"></td>
+        {% endif %}
+        {% if data.telegram %}
+            <td class="col"><i class="bi bi-telegram"></i></td>
+        {% else %}
+            <td class="col"></td>
+        {% endif %}        
+        
+        <td class="col p-0">            
+            <div 
+                class="btn btn-sm"             
+                type="button" 
+                id="tb-but-edit" 
+                hx-post="{% url 'app_clients_edit' data.id %}"
+                hx-trigger="click"
+                hx-target=".page-container"
+                hx-swap="outerHTML">
+                <i class="bi bi-pencil"></i>
+            </div>
+        </td>
+        <td class="col p-0">
+            <div 
+                class="btn btn-sm"             
+                type="button" 
+                id="tb-but-del" 
+                hx-post="{% url 'app_clients_delete' data.id %}"
+                hx-trigger="click"
+                hx-target=".page-container"
+                hx-swap="outerHTML">
+                <i class="bi bi-trash3"></i>
+            </div>
+            
+        </td> 
+    </tr>
+    {% endfor %}

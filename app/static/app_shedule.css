@@ -1,0 +1,222 @@
+
+.content{
+    position: inherit;
+
+    display: grid;
+    grid-template-columns: 1fr auto 3fr;
+    gap: 1rem;
+}
+
+.columnA {
+    grid-column: 1;
+    width: 40vw;
+
+    display: flex;
+    flex-direction: column;
+}
+.columnB {
+    grid-column: 3;
+    position: inherit;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.columnA .selector_month{
+    height: 50px;
+
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2rem;
+
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 1.3rem;
+}
+
+.columnA .selector_month .monthNum{
+    display: none;
+}
+
+.columnA .selector_month .btn-sm{
+    text-align: center;
+    width:50px;
+}
+.columnA .selector_month .btn-sm:hover{
+    color: var(--clr-txt-dark);
+    font-weight: bold;
+}
+
+.calendar{
+    display: flex;
+}
+
+.calendar table.month{
+    width: 100%;
+    height: 400px;
+}
+
+.calendar th.month{
+    display: none;
+}
+
+
+.calendar tr{
+    height: 50px;
+}
+.calendar a{
+    text-decoration: none;
+    color: var(--clr-txt-dark);
+}
+
+.calendar td:hover{
+    background-color: var(--clr-cal-hover);
+    /* border-radius: 7px; */
+
+    font-size: 2rem;
+    font-weight: 500;
+    z-index: 100;
+    color: var(--clr-txt-light);
+}
+
+
+.calendar  tr td.event{
+    background-color: var(--clr-menu-sec);
+}
+
+.calendar  tr td.event a{
+    font-size: 1.5rem;
+    color: var(--clr-txt-light);
+}
+
+.calendar tr td.today{
+    font-size: 1.8rem;
+    color: var(--clr-cal-today);
+    border: 3px solid  var(--clr-cal-today);
+}
+
+.calendar tr td.selected{
+    background-color: var(--clr-cal-select);
+}
+
+
+.calendar td{
+    text-align: center;
+    width: 14.285%;
+}
+
+
+/* Modal Win */
+.columnB h3{
+    text-align: center;
+}
+
+.columnB .calendar-data{
+    width: 100%;
+    height: 50px;
+
+    display: flex;
+    flex-direction: row;
+    gap: 0; 
+}
+
+
+.columnB .spec{
+    width: inherit;
+    height: 35px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+    color: var(--clr-txt-dark);
+}
+
+.columnB .metting{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: .5rem;
+
+}
+
+.columnB .metting .meet{
+    width: 100%;
+    height: 100px;
+    background-color: var(--clr-bg);
+
+    text-decoration: none;
+    color: var(--clr-txt-dark);
+}
+.columnB .metting .meet:hover{
+    background-color: var(--clr-meet);
+}
+.meet .meet-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 .5rem;
+
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+.meet-header .m-status{
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;        
+}
+
+.meet .meet-service{
+    padding: 0 1.5rem;
+    font-size: 1.1rem;
+}
+
+.meet .meet-note{
+    padding: 0 2.5rem;
+    font-size: .9rem;
+    font-style: italic;
+    height: 22px;
+}
+
+.meet .meet-footer{
+    height: 20px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0;
+
+    padding: 0;
+
+    font-size: .8rem;
+    font-weight: 800;
+    text-transform: lowercase;
+}
+
+.meet-footer .m-value, 
+.meet-footer .m-report, 
+.meet-footer .m-review {
+    width: 80px;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.meet-footer .m-value{
+    background-color: var(--clr-m-value);
+    color: var(--clr-txt-light);
+}
+.meet-footer .m-report{
+    background-color:var(--clr-m-report);
+    color: var(--clr-txt-light);
+}
+
+.meet-footer .m-review{
+    background-color: var(--clr-m-review);
+    color: var(--clr-txt-light);
+}

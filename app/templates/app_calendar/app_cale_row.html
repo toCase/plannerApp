@@ -1,0 +1,40 @@
+<tbody id="data_cale">
+{% if cale_data %}
+{% for data in cale_data %}
+<tr>
+    <td class="col-6">{{data.cl_spec}}</td>
+    <td class="col-6">{{data.cl_shed}}</td>
+    <td class="col p-0">
+        <div class="btn btn-sm" 
+            type="button" 
+            id="tb-but-edit" 
+            hx-post="{% url 'app_cale_edit' data.id day month year %}"
+            hx-trigger="click" 
+            hx-target="#form-widget" 
+            hx-swap="outerHTML">
+            
+            <i class="bi bi-pencil"></i>
+        </div>
+    </td>
+    <td class="col p-0">
+        <div class="btn btn-sm" 
+            type="button" 
+            id="tb-but-del" 
+            hx-post="{% url 'app_cale_delete' data.id day month year %}"
+            hx-trigger="click" 
+            hx-target="#cale-container" 
+            hx-swap="outerHTML">
+            
+            <i class="bi bi-trash3"></i>
+        </div>
+    </td>
+</tr>
+{% endfor %}
+{% else %}
+<tr>
+    <td class="col text-center">
+        На цей день поки немає нікого
+    </td>
+</tr>
+{% endif %}
+</tbody>
